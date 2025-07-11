@@ -1,26 +1,41 @@
-# WhatsApp MCP Server
+# WhatsApp MCP Integration Server
 
-This is a Model Context Protocol (MCP) server for WhatsApp.
+A streamlined implementation of a **Model Context Protocol (MCP) server for WhatsApp**, designed to enable advanced AI-based interactions with your personal WhatsApp account.
 
-With this you can search and read your personal Whatsapp messages (including images, videos, documents, and audio messages), search your contacts and send messages to either individuals or groups. You can also send media files including images, videos, documents, and audio messages.
+With this system, you can:
+- Access and search your WhatsApp messages (including media like images, videos, audio, and documents)
+- Browse and interact with your contact list
+- Send messages and files to individuals or groups
+- Seamlessly integrate with Claude for intelligent WhatsApp conversations
 
-It connects to your **personal WhatsApp account** directly via the Whatsapp web multidevice API (using the [whatsmeow](https://github.com/tulir/whatsmeow) library). All your messages are stored locally in a SQLite database and only sent to an LLM (such as Claude) when the agent accesses them through tools (which you control).
+It connects to your account using the **WhatsApp Web Multidevice API** via the [whatsmeow](https://github.com/tulir/whatsmeow) Go library, storing data locally in SQLite. Your messages remain private and are only accessed through MCP tools that you control.
 
-Here's an example of what you can do when it's connected to Claude.
+> 📸 Example: Claude chatting with your WhatsApp through this bridge  
+> ![WhatsApp MCP](./example-use.png)
 
-![WhatsApp MCP](./example-use.png)
+---
 
-> To get updates on this and other projects I work on [enter your email here](https://docs.google.com/forms/d/1rTF9wMBTN0vPfzWuQa2BjfGKdKIpTbyeKxhPMcEzgyI/preview)
+## 🚀 Features
 
-## Installation
+- Secure, local-only WhatsApp access
+- Claude-compatible integration using MCP
+- Media support: images, videos, documents, voice notes
+- SQLite-based storage for efficient querying
+- Voice message conversion using FFmpeg (optional)
 
-### Prerequisites
+---
 
-- Go
+## 🛠 Installation & Setup
+
+### Requirements
+
+- Go (latest version)
 - Python 3.6+
-- Anthropic Claude Desktop app (or Cursor)
-- UV (Python package manager), install with `curl -LsSf https://astral.sh/uv/install.sh | sh`
-- FFmpeg (_optional_) - Only needed for audio messages. If you want to send audio files as playable WhatsApp voice messages, they must be in `.ogg` Opus format. With FFmpeg installed, the MCP server will automatically convert non-Opus audio files. Without FFmpeg, you can still send raw audio files using the `send_file` tool.
+- [UV](https://astral.sh/uv/) – Python package manager  
+- Claude Desktop App **or** Cursor  
+- FFmpeg (optional, for voice message conversion)
+
+---
 
 ### Steps
 
